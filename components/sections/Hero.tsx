@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Image from "next/image";
 import { Fragment, PropsWithChildren } from "react";
 import { TypographyLogo } from "../ui/TypographyLogo";
 
@@ -10,11 +11,13 @@ export function Hero() {
           <TypographyLogo className="w-12" />
         </div>
       </header>
-      <div className="max-w-2xl my-16 leading-relaxed text-white/60">
-        <div className="w-16 h-16 overflow-hidden rounded-full bg-white/10">
-          <img
+      <div className="max-w-2xl my-16 leading-relaxed text-white/80">
+        <div className="relative w-16 h-16 overflow-hidden rounded-full bg-white/10">
+          <Image
             src="/me.jpg"
-            className="object-cover object-center w-full h-full"
+            alt="Picture of Gino"
+            fill={true}
+            className="object-cover"
           />
         </div>
         <div className="mt-8 mb-8 space-y-4">
@@ -22,7 +25,7 @@ export function Hero() {
             I'm a full-stack <Highlight>software engineer</Highlight> from The
             Netherlands.
           </div>
-          <div className="text-white/40">
+          <div className="text-white/60">
             Welcome to my personal site. I'm a 21-years old self-taught software
             engineer from The Netherlands, that loves to create
             web-applications. I would love to work on interesting projects, feel
@@ -77,8 +80,13 @@ function SocialLinks() {
           target="_blank"
           rel="noopener noreferrer"
           className="transition duration-300 ease-in-out opacity-50 hover:opacity-100"
+          aria-label={`Link to ${icon} social media platform`}
         >
-          <img src={`/social-icons/${icon}.svg`} className="w-5 h-5" />
+          <img
+            src={`/social-icons/${icon}.svg`}
+            className="w-5 h-5"
+            alt={`${icon} Icon`}
+          />
         </a>
       ))}
     </Fragment>
