@@ -4,6 +4,7 @@ import { useState } from "react";
 import { EffectCoverflow } from "swiper";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useMediaQuery } from "../../lib/hooks/useMediaQuery";
 
 enum ToolType {
   Language,
@@ -119,6 +120,8 @@ const tools = [
 const initialSlideIndex = tools.findIndex((t) => t.label === "Node.js");
 
 export function Experiences() {
+  const matchesBreakpoint = useMediaQuery("(min-width: 768px)");
+
   const [currentToolIndex, setCurrentToolIndex] = useState(initialSlideIndex);
   const currentTool = tools[currentToolIndex];
 
@@ -133,8 +136,8 @@ export function Experiences() {
       <div className="absolute inset-0 z-[1] bg-center bg-[url(/patterns/graph.svg)] [mask-image:radial-gradient(at_top_right,white,rgba(255,255,255,0)_70%)]" />
       <div className="absolute inset-0 z-[1] bg-center [background-image:radial-gradient(at_bottom_right,rgba(0,0,0,0.5),rgba(0,0,0,0.1)_100%)]" />
 
-      <div className="relative z-10 overflow-hidden">
-        <div className="absolute left-8 top-1/2 -translate-y-1/2 z-20 [mask-image:linear-gradient(180deg,hsla(0,0%,100%,0),#fff_40%,#fff_60%,hsla(0,0%,100%,0))] w-[27rem] px-8">
+      <div className="relative z-10 flex flex-col-reverse overflow-hidden md:block">
+        <div className="md:absolute md:left-8 md:top-1/2 md:-translate-y-1/2 z-20 [mask-image:linear-gradient(180deg,hsla(0,0%,100%,0),#fff_40%,#fff_60%,hsla(0,0%,100%,0))] md:w-[27rem] px-4 md:px-8">
           <Swiper
             coverflowEffect={{
               rotate: 0,
@@ -152,14 +155,11 @@ export function Experiences() {
             allowTouchMove={false}
             speed={3 * 1000}
             loop={true}
-            slidesPerView={6}
+            slidesPerView={matchesBreakpoint ? 6 : 5}
             centeredSlides={true}
-            style={{
-              height: 456,
-            }}
             preventInteractionOnTransition={false}
             onSlideChange={({ realIndex }) => setCurrentToolIndex(realIndex)}
-            className="![overflow:unset]"
+            className="![overflow:unset] md:h-[456px] h-[380px]"
           >
             {tools.map((tool) => (
               <SwiperSlide key={tool.label}>
@@ -191,8 +191,8 @@ export function Experiences() {
           </Swiper>
         </div>
 
-        <div className="w-1/2 ml-auto">
-          <div className="py-20 pr-16 ml-12">
+        <div className="w-full md:w-1/2 md:ml-auto">
+          <div className="py-12 pr-12 ml-8 md:py-20 md:ml-12 md:pr-16">
             <div className="flex items-center justify-center w-10 h-10 mb-4 border shadow-sm rounded-xl bg-white/10 border-white/20 text-white/90">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

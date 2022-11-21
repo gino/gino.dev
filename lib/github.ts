@@ -3,11 +3,15 @@ export interface Repository {
   name: string;
   url: string;
   stars: number;
+  description: string;
 }
 
 const api = "https://api.github.com";
 
-export async function getRepository(fullName: string): Promise<Repository> {
+export async function getRepository(
+  fullName: string,
+  description: string
+): Promise<Repository> {
   const [owner, name] = fullName.split("/");
   const response = await fetch(`${api}/repos/${owner}/${name}`, {
     headers: {
@@ -21,5 +25,6 @@ export async function getRepository(fullName: string): Promise<Repository> {
     name: json.full_name,
     url: json.html_url,
     stars: json.stargazers_count,
+    description,
   };
 }

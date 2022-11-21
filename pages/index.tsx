@@ -9,7 +9,7 @@ function Index(props: InferGetStaticPropsType<typeof getStaticProps>) {
   const { repositories } = props;
 
   return (
-    <div className="max-w-4xl py-20 mx-auto space-y-32">
+    <div className="max-w-4xl px-4 py-8 mx-auto space-y-32 lg:py-20 lg:px-0">
       <Head>
         <title>gino.dev</title>
       </Head>
@@ -25,7 +25,7 @@ function Index(props: InferGetStaticPropsType<typeof getStaticProps>) {
 
 export async function getStaticProps() {
   const repositories = await Promise.all(
-    _repositories.map(([name]) => getRepository(name))
+    _repositories.map(([name, description]) => getRepository(name, description))
   );
 
   return {
