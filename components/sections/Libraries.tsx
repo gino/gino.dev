@@ -1,39 +1,14 @@
 import { useState } from "react";
+import { Repository } from "../../lib/github";
 
-interface Repository {
-  name: string;
-  description: string;
-}
-
-export const _repositories: Repository[] = [
-  {
-    name: "hayes/pothos",
-    description: "",
-  },
-  {
-    name: "tailwindlabs/tailwindcss",
-    description: "",
-  },
-  {
-    name: "vercel/next.js",
-    description: "",
-  },
-  {
-    name: "pnpm/pnpm",
-    description: "",
-  },
-  {
-    name: "prisma/prisma",
-    description: "",
-  },
-  {
-    name: "vitejs/vite",
-    description: "",
-  },
-  {
-    name: "date-fns/date-fns",
-    description: "",
-  },
+export const _repositories: [string, string][] = [
+  ["hayes/pothos", ""],
+  ["tailwindlabs/tailwindcss", ""],
+  ["vercel/next.js", ""],
+  ["pnpm/pnpm", ""],
+  ["prisma/prisma", ""],
+  ["vitejs/vite", ""],
+  ["date-fns/date-fns", ""],
 ];
 
 interface Props {
@@ -41,7 +16,9 @@ interface Props {
 }
 
 export function Libraries({ repositories }: Props) {
-  const [randomRepositories] = useState(() => repositories.slice(0, 3));
+  const [randomRepositories, setRepositories] = useState(() =>
+    repositories.slice(0, 3)
+  );
 
   return (
     <div className="relative px-16 py-20 rounded-3xl bg-gradient-to-tl from-violet-900 via-violet-600 to-violet-400">
@@ -80,7 +57,14 @@ export function Libraries({ repositories }: Props) {
         </div>
         <div className="relative -ml-20">
           <div className="absolute -top-11">
-            <button className="flex items-center px-3 py-2 space-x-3 text-sm font-semibold transition duration-150 ease-in-out rounded-lg bg-black/10 hover:bg-black/20 active:bg-black/30">
+            <button
+              onClick={() =>
+                setRepositories(() =>
+                  repositories.sort(() => Math.random() - 0.5).slice(0, 3)
+                )
+              }
+              className="flex items-center px-3 py-2 space-x-3 text-sm font-semibold transition duration-150 ease-in-out rounded-lg bg-black/10 hover:bg-black/20 active:bg-black/30"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-4 h-4 text-white/60"
@@ -100,9 +84,9 @@ export function Libraries({ repositories }: Props) {
           </div>
           <div className="bg-black/30 overflow-hidden border divide-y divide-white/5 border-white/10 w-[28rem] rounded-2xl backdrop-blur-[70px] shadow-xl shadow-black/30 relative z-20">
             {randomRepositories.map((repository, index) => (
-              <div key={index} className="relative py-6 px-7">
+              <div key={repository.id} className="relative py-6 px-7">
                 <a
-                  href=""
+                  href={repository.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block mb-1 font-semibold hover:underline"
@@ -122,7 +106,7 @@ export function Libraries({ repositories }: Props) {
                   >
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
-                  <span className="tracking-wide">12.3K</span>
+                  <span className="tracking-wide">{repository.stars}</span>
                 </div>
               </div>
             ))}
