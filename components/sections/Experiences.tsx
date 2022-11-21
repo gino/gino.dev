@@ -128,9 +128,10 @@ export function Experiences() {
       className="relative overflow-hidden rounded-3xl"
       animate={{ backgroundColor: currentTool.color }}
       initial={false}
+      transition={{ duration: 1.5, ease: "easeInOut" }}
     >
       <div className="absolute inset-0 z-[1] bg-center bg-[url(/patterns/graph.svg)] [mask-image:radial-gradient(at_top_right,white,rgba(255,255,255,0)_70%)]" />
-      <div className="absolute inset-0 z-[1] bg-center [background-image:radial-gradient(at_bottom_right,rgba(0,0,0,0.5),rgba(0,0,0,0.1)_100%)]" />
+      <div className="absolute inset-0 z-[1] bg-center [background-image:radial-gradient(at_bottom_right,rgba(0,0,0,0.6),rgba(0,0,0,0.2)_100%)]" />
 
       <div className="relative z-10 overflow-hidden">
         <div className="absolute left-8 top-1/2 -translate-y-1/2 z-20 [mask-image:linear-gradient(180deg,hsla(0,0%,100%,0),#fff_40%,#fff_60%,hsla(0,0%,100%,0))] w-[27rem] px-8">
