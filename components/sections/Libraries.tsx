@@ -39,13 +39,13 @@ export function Libraries({ repositories }: Props) {
           <div className="mb-4 text-xl font-semibold">Libraries</div>
           <div className="space-y-4 leading-relaxed text-white/90">
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Necessitatibus minus asperiores commodi dolorum.
+              All the common libraries that I often use in projects and that I
+              would recommend.
             </p>
 
             <p>
-              Repellendus inventore rem nisi ab quia non. Enim consequuntur
-              quibusdam illo eos repellendus.
+              The listed libraries are my personal preference that I have used
+              before in projects.
             </p>
           </div>
 

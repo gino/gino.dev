@@ -25,6 +25,6 @@ export async function getRepository(
     name: json.full_name,
     url: json.html_url,
     stars: json.stargazers_count,
-    description,
+    description: json.description,
   };
 }

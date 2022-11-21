@@ -149,13 +149,12 @@ export function Experiences() {
             <div className="mb-4 text-xl font-semibold">Experiences</div>
             <div className="space-y-4 leading-relaxed text-white/80">
               <p>
-                Languages and frameworks that I have worked with and have
-                experience with.
+                The languages, frameworks and tools that I have experience with
+                and would use again.
               </p>
-
               <p>
-                Repellendus inventore rem nisi ab quia non. Enim consequuntur
-                quibusdam.
+                All listed languages are my personal preferences that I would
+                recommend.
               </p>
             </div>
 
