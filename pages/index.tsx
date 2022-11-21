@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { Fragment, PropsWithChildren } from "react";
-import { Skills } from "../components/sections/Skills";
+import { Experiences } from "../components/sections/Experiences";
+import { Libraries } from "../components/sections/Libraries";
 import { TypographyLogo } from "../components/ui/TypographyLogo";
 
 function Index() {
@@ -51,7 +52,10 @@ function Index() {
         </div>
       </div>
 
-      <Skills />
+      <div className="space-y-2">
+        <Experiences />
+        <Libraries />
+      </div>
     </div>
   );
 }
