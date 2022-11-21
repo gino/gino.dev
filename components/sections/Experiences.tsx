@@ -4,7 +4,6 @@ import { useState } from "react";
 import { EffectCoverflow } from "swiper";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useMediaQuery } from "../../lib/hooks/useMediaQuery";
 
 enum ToolType {
   Language,
@@ -120,8 +119,6 @@ const tools = [
 const initialSlideIndex = tools.findIndex((t) => t.label === "Node.js");
 
 export function Experiences() {
-  const matchesBreakpoint = useMediaQuery("(min-width: 768px)");
-
   const [currentToolIndex, setCurrentToolIndex] = useState(initialSlideIndex);
   const currentTool = tools[currentToolIndex];
 
@@ -136,62 +133,8 @@ export function Experiences() {
       <div className="absolute inset-0 z-[1] bg-center bg-[url(/patterns/graph.svg)] [mask-image:radial-gradient(at_top_right,white,rgba(255,255,255,0)_70%)]" />
       <div className="absolute inset-0 z-[1] bg-center [background-image:radial-gradient(at_bottom_right,rgba(0,0,0,0.5),rgba(0,0,0,0.1)_100%)]" />
 
-      <div className="relative z-10 flex flex-col-reverse overflow-hidden md:block">
-        <div className="md:absolute md:left-8 md:top-1/2 md:-translate-y-1/2 z-20 [mask-image:linear-gradient(180deg,hsla(0,0%,100%,0),#fff_40%,#fff_60%,hsla(0,0%,100%,0))] md:w-[27rem] px-4 md:px-8">
-          <Swiper
-            coverflowEffect={{
-              rotate: 0,
-              stretch: 0,
-              depth: 70,
-              scale: 1,
-              modifier: 1,
-              slideShadows: false,
-            }}
-            effect="coverflow"
-            modules={[EffectCoverflow]}
-            direction="vertical"
-            initialSlide={initialSlideIndex}
-            slideToClickedSlide={true}
-            allowTouchMove={false}
-            speed={3 * 1000}
-            loop={true}
-            slidesPerView={matchesBreakpoint ? 6 : 5}
-            centeredSlides={true}
-            preventInteractionOnTransition={false}
-            onSlideChange={({ realIndex }) => setCurrentToolIndex(realIndex)}
-            className="![overflow:unset] md:h-[456px] h-[380px]"
-          >
-            {tools.map((tool) => (
-              <SwiperSlide key={tool.label}>
-                <button
-                  className={clsx(
-                    "w-full focus:outline-none px-3 py-2.5 bg-black/30 overflow-hidden border border-white/10 rounded-2xl cursor-pointer transition duration-700 ease-in-out backdrop-blur-[70px] shadow-xl shadow-black/20 flex items-center select-none",
-                    currentTool !== tool &&
-                      "hover:scale-105 hover:shadow-2xl hover:shadow-black/80"
-                  )}
-                >
-                  <div className="flex items-center flex-1">
-                    <div className="flex items-center flex-1 space-x-4 font-semibold">
-                      <div className="h-8 w-8 rounded-[8px] flex items-center justify-center from-white/5 to-white/10 bg-gradient-to-tl border border-white/20 shadow-sm">
-                        <div className="h-4 w-4 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-white/90 rounded-[3px] overflow-hidden">
-                          {tool.icon}
-                        </div>
-                      </div>
-                      <span>{tool.label}</span>
-                    </div>
-                    <div>
-                      <div className="text-xs inline-flex items-center font-semibold bg-white/5 px-3.5 py-2 rounded-full">
-                        {ToolType[tool.type]}
-                      </div>
-                    </div>
-                  </div>
-                </button>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-
-        <div className="w-full md:w-1/2 md:ml-auto">
+      <div className="relative z-10 flex flex-col overflow-hidden md:block">
+        <div className="relative z-30 w-full md:w-1/2 md:ml-auto">
           <div className="py-12 pr-12 ml-8 md:py-20 md:ml-12 md:pr-16">
             <div className="flex items-center justify-center w-10 h-10 mb-4 border shadow-sm rounded-xl bg-white/10 border-white/20 text-white/90">
               <svg
@@ -222,6 +165,59 @@ export function Experiences() {
               </button>
             </div>
           </div>
+        </div>
+
+        <div className="md:absolute md:left-8 md:top-1/2 md:-translate-y-1/2 z-20 [mask-image:linear-gradient(180deg,hsla(0,0%,100%,0),#fff_40%,#fff_60%,hsla(0,0%,100%,0))] md:w-[27rem] px-4 md:px-8">
+          <Swiper
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 70,
+              scale: 1,
+              modifier: 1,
+              slideShadows: false,
+            }}
+            effect="coverflow"
+            modules={[EffectCoverflow]}
+            direction="vertical"
+            initialSlide={initialSlideIndex}
+            slideToClickedSlide={true}
+            speed={3 * 1000}
+            loop={true}
+            slidesPerView={6}
+            centeredSlides={true}
+            preventInteractionOnTransition={true}
+            onSlideChange={({ realIndex }) => setCurrentToolIndex(realIndex)}
+            className="![overflow:unset] h-[456px]"
+          >
+            {tools.map((tool) => (
+              <SwiperSlide key={tool.label}>
+                <button
+                  className={clsx(
+                    "w-full focus:outline-none px-3 py-2.5 bg-black/30 overflow-hidden border border-white/10 rounded-2xl cursor-pointer transition duration-700 ease-in-out backdrop-blur-[70px] shadow-xl shadow-black/20 flex items-center select-none",
+                    currentTool !== tool &&
+                      "hover:scale-105 hover:shadow-2xl hover:shadow-black/80"
+                  )}
+                >
+                  <div className="flex items-center flex-1">
+                    <div className="flex items-center flex-1 space-x-4 font-semibold">
+                      <div className="h-8 w-8 rounded-[8px] flex items-center justify-center from-white/5 to-white/10 bg-gradient-to-tl border border-white/20 shadow-sm">
+                        <div className="h-4 w-4 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-white/90 rounded-[3px] overflow-hidden">
+                          {tool.icon}
+                        </div>
+                      </div>
+                      <span>{tool.label}</span>
+                    </div>
+                    <div>
+                      <div className="text-xs inline-flex items-center font-semibold bg-white/5 px-3.5 py-2 rounded-full">
+                        {ToolType[tool.type]}
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </motion.div>

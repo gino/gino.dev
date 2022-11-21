@@ -21,11 +21,11 @@ export function Libraries({ repositories }: Props) {
   );
 
   return (
-    <div className="relative hidden px-16 py-20 rounded-3xl bg-gradient-to-tl from-violet-900 via-violet-600 to-violet-400 lg:block">
+    <div className="relative px-8 py-12 md:px-16 md:py-20 rounded-3xl bg-gradient-to-tl from-violet-900 via-violet-600 to-violet-400">
       <div className="absolute inset-0 z-[1] bg-center bg-[url(/patterns/graph.svg)] [mask-image:radial-gradient(at_top_left,white,rgba(255,255,255,0)_70%)] rounded-tl-3xl" />
 
-      <div className="relative z-10 grid items-center grid-cols-3">
-        <div className="max-w-sm col-span-2">
+      <div className="relative z-10 items-center grid-cols-3 md:grid">
+        <div className="col-span-2 md:max-w-sm">
           <div className="flex items-center justify-center w-10 h-10 mb-4 border shadow-sm rounded-xl bg-white/10 border-white/20 text-white/90">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -50,20 +50,26 @@ export function Libraries({ repositories }: Props) {
           </div>
 
           <div className="flex items-center mt-8 space-x-2">
-            <button className="px-5 py-3 text-sm font-semibold tracking-wide transition duration-150 ease-in-out rounded-lg bg-black/20 focus:outline-none hover:bg-black/30">
-              View all of favorite libraries
-            </button>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/gino?tab=stars"
+            >
+              <button className="px-5 py-3 text-sm font-semibold tracking-wide transition duration-150 ease-in-out rounded-lg bg-black/20 focus:outline-none hover:bg-black/30">
+                View all of my favorite libraries
+              </button>
+            </a>
           </div>
         </div>
-        <div className="relative -ml-20">
-          <div className="absolute -top-11">
+        <div className="relative my-12 md:-ml-20 md:my-0">
+          <div className="absolute -translate-x-1/2 -bottom-14 left-1/2 md:left-auto md:-translate-x-0 md:-bottom-auto md:-top-11">
             <button
               onClick={() =>
                 setRepositories(() =>
                   repositories.sort(() => Math.random() - 0.5).slice(0, 3)
                 )
               }
-              className="flex items-center px-3 py-2 space-x-3 text-sm font-semibold transition duration-150 ease-in-out rounded-lg bg-black/10 hover:bg-black/20 active:bg-black/30"
+              className="flex items-center px-3 py-2 space-x-3 text-sm font-semibold transition duration-150 ease-in-out rounded-full md:rounded-lg bg-black/20 md:bg-black/10 hover:bg-black/20 active:bg-black/30"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -82,8 +88,8 @@ export function Libraries({ repositories }: Props) {
               <span>View more</span>
             </button>
           </div>
-          <div className="bg-black/30 overflow-hidden border divide-y divide-white/5 border-white/10 w-[28rem] rounded-2xl backdrop-blur-[70px] shadow-xl shadow-black/30 relative z-20">
-            {randomRepositories.map((repository, index) => (
+          <div className="bg-black/30 overflow-hidden border divide-y divide-white/5 border-white/10 md:w-[28rem] md:border-l md:border-r border-l-0 border-r-0 md:rounded-2xl md:backdrop-blur-[70px] shadow-lg md:shadow-xl md:shadow-black/30 relative z-20 md:-mx-0 -mx-8">
+            {randomRepositories.map((repository) => (
               <div key={repository.id} className="relative py-6 px-7">
                 <a
                   href={repository.url}
@@ -93,11 +99,11 @@ export function Libraries({ repositories }: Props) {
                 >
                   {repository.name}
                 </a>
-                <div className="max-w-xs text-sm truncate text-white/80">
+                <div className="text-sm truncate md:max-w-xs text-white/80">
                   {repository.description}
                 </div>
 
-                <div className="absolute flex items-center px-3 py-2 space-x-2 text-xs font-semibold rounded-full top-5 right-5 bg-white/5">
+                <div className="absolute flex items-center px-3 py-2 space-x-2 text-xs font-semibold rounded-full top-4 right-4 bg-white/5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-4 h-4 text-white/30"
@@ -117,7 +123,7 @@ export function Libraries({ repositories }: Props) {
             ))}
           </div>
 
-          <div className="absolute -left-5 -bottom-5 border border-white/10 z-10 w-[calc(100%+20px)] h-[calc(100%+20px)] bg-white/10 rounded-bl-[24px] [mask-image:linear-gradient(40deg,#fff_16.35%,hsla(0,0%,100%,0)_39.66%)]" />
+          <div className="hidden md:block absolute -left-5 -bottom-5 border border-white/10 z-10 w-[calc(100%+20px)] h-[calc(100%+20px)] bg-white/10 rounded-bl-[24px] [mask-image:linear-gradient(40deg,#fff_16.35%,hsla(0,0%,100%,0)_39.66%)]" />
         </div>
       </div>
     </div>

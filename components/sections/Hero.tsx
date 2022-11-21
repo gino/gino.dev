@@ -13,7 +13,7 @@ export function Hero() {
       <div className="max-w-2xl my-16 leading-relaxed text-white/60">
         <div className="w-16 h-16 overflow-hidden rounded-full bg-white/10">
           <img
-            src="https://64.media.tumblr.com/9548df747fb7c87e7200e8d93fc9b6c0/tumblr_odj0xsEJ0E1vai64fo1_1280.jpg"
+            src="/me.jpg"
             className="object-cover object-center w-full h-full"
           />
         </div>
