@@ -4,6 +4,8 @@ import { Fragment, PropsWithChildren } from "react";
 import { TypographyLogo } from "../ui/TypographyLogo";
 
 export function Hero() {
+  const age = new Date().getFullYear() - new Date("01/31/2001").getFullYear();
+
   return (
     <div>
       <header>
@@ -12,11 +14,14 @@ export function Hero() {
         </div>
       </header>
       <div className="max-w-2xl my-16 leading-relaxed text-white/80">
-        <div className="relative w-16 h-16 overflow-hidden rounded-full bg-white/10">
+        <div className="relative w-20 h-20 overflow-hidden rounded-full bg-white/10">
           <Image
-            src="/me.jpg"
-            alt="Picture of Gino"
+            src="/cat.png"
+            alt="Picture"
             fill={true}
+            sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
             className="object-cover"
           />
         </div>
@@ -26,10 +31,10 @@ export function Hero() {
             Netherlands.
           </div>
           <div className="text-white/60">
-            Welcome to my personal site. I'm a 21-years old self-taught software
-            engineer from The Netherlands, that loves to create
-            web-applications. I would love to work on interesting projects, feel
-            free to reach out to me. Let's create something together!
+            Welcome to my personal site. I'm a {age}-year-old, self-taught
+            software engineer from The Netherlands. I enjoy creating web
+            applications and am open to working on interesting projects. Let's
+            collaborate and create something amazing!
           </div>
         </div>
         <div className="flex items-center gap-5">
@@ -67,8 +72,7 @@ function Highlight({ children }: PropsWithChildren) {
 function SocialLinks() {
   const links = [
     ["github", "https://github.com/gino/gino.dev"],
-    ["linkedin", "https://linkedin.com/in/ginolouwsma"],
-    ["instagram", "https://instagram.com/gino._1"],
+    ["dribbble", "https://dribbble.com/gino-dev"],
   ];
 
   return (
