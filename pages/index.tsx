@@ -16,6 +16,11 @@ function Index(props: InferGetStaticPropsType<typeof getStaticProps>) {
           name="description"
           content="gino.dev | Full-stack web developer, personal site"
         />
+        <meta
+          name="keywords"
+          content="gino.dev, gino, portfolio, personal site, full stack, web developer, developer, react, typescript, next.js, ginodev, gino dev"
+        />
+        <meta name="author" content="Gino" />
       </Head>
       <Hero />
 
