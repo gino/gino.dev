@@ -1,0 +1,4 @@
+User-Agent: *
+
+Host: https://gino.dev
+Sitemap: https://gino.dev/sitemap.xml
